@@ -1,1 +1,16 @@
 @import "tailwindcss";
+body {
+    font-family: 'Roboto';
+    background-color: #121212; /* dark background */
+    color: #fff; /* white text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto';
+    font-weight: 700; /* bold headers */
+}
+
+button, .btn {
+    font-family: 'Roboto';
+    font-weight: 500; /* slightly bold buttons */
+}
