@@ -7,6 +7,8 @@ import Home from "./components/Home"
 import Favorites from "./components/Favorites"
 import Cart from "./components/Cart"
 import Trending from "./components/Trending"
+import Moviedetails from "./components/Moviedetails"
+import Category from "./components/Category"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +17,8 @@ const router = createBrowserRouter(
       <Route path="/favorites" element={<Favorites></Favorites>}></Route>
       <Route path="/cart" element={<Cart></Cart>}></Route>
       <Route path="/trending" element={<Trending></Trending>}></Route>
+      <Route path="/moviedetails/:id" element={<Moviedetails></Moviedetails>}></Route>
+      <Route path="/category/:id" element={<Category></Category>}></Route>
     </Route>
   )
 )

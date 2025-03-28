@@ -14,3 +14,12 @@ button, .btn {
     font-family: 'Roboto';
     font-weight: 500; /* slightly bold buttons */
 }
+.slick-slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    color: white !important;
+  }

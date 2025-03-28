@@ -1,5 +1,5 @@
 import React from "react";
-import { data, Link } from "react-router";
+import {Link } from "react-router";
 import { FaGithub } from "react-icons/fa6";
 import { FaTelegram, FaInstagram, FaDiscord } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
