@@ -1,10 +1,17 @@
 import React from "react";
+import { FaRegStar } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"
 import useWindowSize from "../hooks/useWindowSize";
+import { handleFavoritesButtonRender , handleFavorites } from "../features/MovieSlice";
+import { useDispatch , useSelector } from "react-redux";
 import { Link } from "react-router";
 const Card = (movie) => {
+    const dispatch = useDispatch()
     const screenwidth = useWindowSize()
     const maxChar = screenwidth < 1000 ? 50 : 150
-    
+    var isFavorite = useSelector(state => handleFavoritesButtonRender(state , movie.movie.id))
   return (
     <>
       <div className=" h-[466px] lg:h-[812px] flex flex-col gap-1.5 items-center justify-between rounded-lg shadow-lg bg-[#1E1E1E] p-1.5 lg:p-4">
@@ -21,7 +28,11 @@ const Card = (movie) => {
         </p>
         <div className="flex flex-row justify-between w-full">
           <span>16.99</span>
-          <span>star</span>
+          <Tippy  content={isFavorite ? "remove from favorites":"add to favorites"} >
+          <button type="button" className="cursor-pointer  "onClick={()=>dispatch(handleFavorites(movie.movie))}>
+            {isFavorite ? <FaStar className="text-yellow-400 lg:text-2xl " /> : <FaRegStar  className="lg:text-2xl"/>}
+            </button>
+          </Tippy>
         </div>
         <Link
           to={`/movieDetails/${movie.id}`}

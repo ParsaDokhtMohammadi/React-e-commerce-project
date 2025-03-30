@@ -6,7 +6,7 @@ import { IconContext } from "react-icons/lib";
 const Footer = () => {
   return (
     <>
-      <footer className="flex bg-[#1E1E1E] flex-col">
+      <footer className="flex bg-[#1E1E1E] flex-col mt-4">
         <IconContext.Provider value={{ size: "2rem" }}>
           <div className="flex flex-row justify-evenly px-5 pb-2 items-center">
             <div className="flex flex-col">

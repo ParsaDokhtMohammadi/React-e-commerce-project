@@ -10,6 +10,7 @@ import Trending from "./components/Trending"
 import Moviedetails from "./components/Moviedetails"
 import Category from "./components/Category"
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout></Layout>}>
