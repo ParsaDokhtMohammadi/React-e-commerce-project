@@ -35,7 +35,7 @@ const Card = (movie) => {
           </Tippy>
         </div>
         <Link
-          to={`/movieDetails/${movie.id}`}
+          to={`/movieDetails/${movie.movie.id}`}
           className="bg-[#E50914] rounded px-2 py-1 lg:px-4 lg:py-2 lg:text-[20px] hover:shadow-[5px_5px_8px_4px] hover:shadow-[#EEE] transition-all duration-300 ease-in-out"
         >
           more details
