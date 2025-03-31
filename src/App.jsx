@@ -17,7 +17,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home></Home>}></Route>
       <Route path="/favorites" element={<Favorites></Favorites>}></Route>
       <Route path="/cart" element={<Cart></Cart>}></Route>
-      <Route path="/trending" element={<Trending></Trending>}></Route>
+      <Route path="/trending/:page" element={<Trending></Trending>}></Route>
       <Route path="/moviedetails/:id" element={<Moviedetails></Moviedetails>}></Route>
       <Route path="/category/:id" element={<Category></Category>}></Route>
     </Route>

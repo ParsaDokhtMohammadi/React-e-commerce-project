@@ -1,4 +1,6 @@
 import SimilarCard from "./SimilarCard";
+import { useState , useEffect } from "react";
+import useWindowSize from "../hooks/useWindowSize";
 import Slider from "react-slick";
 import { FaRegStar } from "react-icons/fa6";
 import { FaStar, FaCartPlus } from "react-icons/fa";
@@ -29,8 +31,33 @@ const Moviedetails = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    
   };
-
+  const settingsLg = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    
+  };
+  const settingsS = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+  };
+  const screenWidth = useWindowSize()
+  const [sliderSettings, setSliderSettings] = useState(settings);
+    useEffect(() => {
+      if (screenWidth < 1200 && screenWidth > 800) {
+        setSliderSettings(settings);
+      } else if (screenWidth<800){
+        setSliderSettings(settingsS)
+      } 
+      else {
+        setSliderSettings(settingsLg);
+      }
+    }, [screenWidth]);
   const clockedRuntime = (time) => {
     var hours = parseInt(time / 60);
     var mins = time - hours * 60;
@@ -44,7 +71,7 @@ const Moviedetails = () => {
       <div className=" gap-3 flex flex-row md:gap-12">
         <img
           src={`https://image.tmdb.org/t/p/w500${movieDetails?.poster_path}`}
-          className="max-w-[200px] md:max-w-[300px] rounded lg:max-w-[500px] max-h-[750px]"
+          className="max-w-[200px] md:max-w-[300px] rounded lg:max-w-[500px] max-h-[600px]"
         />
         <div className="flex flex-col md:p-6 gap-2.5 w-full">
           <h2 className="text-[18px] md:text-3xl">{movieDetails?.title}</h2>
@@ -68,12 +95,13 @@ const Moviedetails = () => {
             </li>
           </ul>
           <p>{movieDetails?.overview}</p>
-          <div className="flex gap-2.5 w-full">
+          <span>price  16.99$</span>
+          <div className="flex gap-2.5">
             <button
               className="flex items-center gap-2.5 p-2  rounded-xl bg-[#27AE60] cursor-pointer relative 
             hover:shadow-[5px_5px_8px_4px] hover:shadow-[#EEE] hover:bottom-1 transition-all  duration-300 ease-in-out"
             >
-              add to cart <FaCartPlus />
+              <span className="hidden md:block">add to cart</span> <FaCartPlus />
             </button>
             <button
               type="button"
@@ -81,28 +109,17 @@ const Moviedetails = () => {
               className="flex items-center gap-2.5 p-2  rounded-xl bg-[#F5C518]  cursor-pointer relative 
             hover:shadow-[5px_5px_8px_4px] hover:shadow-[#EEE] hover:bottom-1 transition-all  duration-300 ease-in-out"
             >
-              {isFavorite ? "remove from favorites" : `add to favorites`}
+              {isFavorite ? <span className="hidden md:block">remove from favorites</span> : <span className="hidden md:block">add to favorites</span>}
               {isFavorite ? <FaStar /> : <FaRegStar />}
             </button>
           </div>
-          {/* <div className="hidden w-full mt-3 lg:flex lg:flex-col ">
-            <h1 className="text-2xl">other similar movies</h1>
-            <div className="block max-w-[1245px] overflow-hidden">
-              <Slider {...settings}>
-                {similarMovies?.results.slice(10, 20).map((movie) => (
-                  <div key={movie.id} className="p-2">
-                    <SimilarCard movie={movie}></SimilarCard>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </div> */}
+          
         </div>
       </div>
-      <div className="flex flex-col mt-3 lg:hidden">
+      <div className="flex flex-col mt-3 ">
         <h1 className="text-2xl">other similar movies</h1>
         <div>
-          <Slider {...settings}>
+          <Slider {...sliderSettings}>
             {similarMovies?.results.slice(10, 20).map((movie) => (
               <div key={movie.id} className="p-2">
                 <SimilarCard movie={movie}></SimilarCard>

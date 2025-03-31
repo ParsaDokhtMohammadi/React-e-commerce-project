@@ -21,7 +21,7 @@ const Header = () => {
             Favorites
           </NavLink>
           <NavLink
-            to={"Trending"}
+            to={"Trending/1"}
             className={({ isActive }) =>  `duration-200 ${isActive ? "text-[#E50914]" : ""}`}
           >
             Trending

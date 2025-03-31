@@ -40,7 +40,7 @@ const Footer = () => {
                 <Link to={"/cart"}>cart</Link>
                 <Link to={"/favorites"}>favorites</Link>
             </div>
-            <div className="w-[225px]">
+            <div className="max-w-[225px] py-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eveniet dignissimos tempore ?
             </div>
             </div>
