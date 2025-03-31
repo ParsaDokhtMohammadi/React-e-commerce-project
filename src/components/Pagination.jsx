@@ -1,14 +1,31 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
+import { FaChevronLeft ,FaChevronRight } from "react-icons/fa";
 const Pagination = ({page , totalpage , newPage}) => {
     const navigate = useNavigate();
     const changePage = (newPage) => {
-        navigate(`/trending/${newPage}`);
+        navigate(`/trending/${newPage}`)
+        window.scrollTo({ top: 0, behavior: "smooth" })
       };
-    const pagination = () => {
-        return [1,2,3,4].map((num) => {
+    const paginationPlus = () => {
+        return [1,2].map((num) => {
           const pageNumber = page + num;
-          if(page+num>=totalpage) return
+          if(page+num>=totalpage ) return
+          return (
+            <button
+              key={pageNumber}
+              className="px-4 py-2 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer mx-1 hover:bg-[#27AE60] duration-200"
+              onClick={() => changePage(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          );
+        });
+      };
+    const paginationNeg = () => {
+        return [2,1].map((num) => {
+          const pageNumber = page - num;
+          if(page-num<=1 ) return
           return (
             <button
               key={pageNumber}
@@ -23,17 +40,19 @@ const Pagination = ({page , totalpage , newPage}) => {
   return (
     <div className="flex gap-2 mt-6">
     <button
-      className="px-4 py-2 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
+      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
       onClick={() => changePage(Math.max(page - 1, 1))}
       disabled={page === 1}
     >
-      Previous
+      <FaChevronLeft /> Previous
     </button>
     <button
      className={`px-4 py-2 ${page===1 ?"bg-[#27AE60]" :"bg-[#E50914]"} text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200`}
      onClick={() => changePage(1)}>
       1
     </button>
+    {page>3 ? <span className='text-2xl'>...</span> : ""}
+    {paginationNeg()}
     <button
      className={`px-4 py-2 bg-[#27AE60] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200
       ${page===1 || page==totalpage ? "hidden" : "block"}
@@ -43,21 +62,21 @@ const Pagination = ({page , totalpage , newPage}) => {
     </button>
   
    
-    {pagination()}
+    {paginationPlus()}
     
     
-
+    {totalpage-page > 3 ? <span className='text-2xl'>...</span> : ""}
     <button
      className={`px-4 py-2 ${page===totalpage ?"bg-[#27AE60]" :"bg-[#E50914]"} text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200`}
      onClick={() => changePage(totalpage)}>
       {totalpage}
     </button>
     <button
-      className="px-4 py-2 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
+      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
       onClick={() => changePage(page + 1)}
       disabled={totalpage && page >= totalpage}
     >
-      Next
+      Next <FaChevronRight />
     </button>
   </div>
   )
