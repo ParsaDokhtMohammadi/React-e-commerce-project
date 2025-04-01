@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Card from "./Card"
 const Favorites = () => {
   const favoriteMovies = useSelector((state) => state.Movies.favorites);
-
+  
   if (favoriteMovies.length == 0) {
     
     return <div className="h-[calc(100vh-329px)]"><h2>you have no favorite movies</h2></div>;
