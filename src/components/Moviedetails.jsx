@@ -13,6 +13,8 @@ import {
 import {
   handleFavoritesButtonRender,
   handleFavorites,
+  handleCart,
+  handleCartButtonRender,
 } from "../features/MovieSlice";
 import LoadingScreen from "./LoadingScreen";
 const Moviedetails = () => {
@@ -23,6 +25,7 @@ const Moviedetails = () => {
   const isFavorite = useSelector((state) =>
     handleFavoritesButtonRender(state, movieDetails?.id)
   );
+  const isInCart = useSelector((state) => handleCartButtonRender(state, movieDetails?.id));
   const { data: similarMovies, isLoading: GenreLoading } =
     useGetMoviesByGenreQuery(movieDetails?.genres[0].id);
 
@@ -96,10 +99,15 @@ const Moviedetails = () => {
             <span>price 16.99$</span>
             <div className="flex gap-2.5">
               <button
+                onClick={() => dispatch(handleCart(movieDetails))}
                 className="flex items-center gap-2.5 p-2  rounded-xl bg-[#27AE60] cursor-pointer relative 
               hover:shadow-[5px_5px_8px_4px] hover:shadow-[#EEE] hover:bottom-1 transition-all  duration-300 ease-in-out"
               >
-                <span className="hidden md:block">add to cart</span>{" "}
+                {isInCart ? (
+                  <span className="hidden md:block">remove from cart</span>
+                ) : (
+                  <span className="hidden md:block">add to cart</span>
+                )}
                 <FaCartPlus />
               </button>
               <button
