@@ -18,7 +18,7 @@ const Trending = () => {
     return <LoadingScreen></LoadingScreen>;
   } else {
     return (
-      <>z
+      <>
         <div className="p-8 flex flex-col items-center">
           <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] lg:grid-cols-[repeat(4,minmax(200px,1fr))] md:grid-cols-[repeat(3,minmax(200px,1fr))]  gap-6 min-h-[calc(100vh-329px)]">
             {trending?.results.map((movie) => (
