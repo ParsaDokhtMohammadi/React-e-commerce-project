@@ -11,14 +11,14 @@ export const productsApiSlice = createApi({
       query: (page = 1) => `trending/movie/week?api_key=${API_KEY}&page=${page}`,
     }),
     searchMovie: builder.query({
-      query: (movie, page = 1) =>
-        `search/movie?api_key=${API_KEY}&page=${page}&query=${movie}`,
+      query: ({movie, page = 1}) =>
+        `search/movie?api_key=${API_KEY}&query=${movie}&page=${page}`,
     }),
     getMovieDetails: builder.query({
       query: (id) => `movie/${id}?api_key=${API_KEY}`,
     }),
     getMoviesByGenre: builder.query({
-      query: (genreId, page = 1) =>
+      query: ({genreId, page = 1}) =>
         `discover/movie?api_key=${API_KEY}&with_genres=${genreId}&page=${page}`,
     }),
     getGenres: builder.query({

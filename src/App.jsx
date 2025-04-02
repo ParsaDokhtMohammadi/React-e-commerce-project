@@ -10,7 +10,7 @@ import Trending from "./components/Trending"
 import Moviedetails from "./components/Moviedetails"
 import Category from "./components/Category"
 import Search from "./components/Search"
-import LoadingScreen from "./components/LoadingScreen"
+
 
 
 const router = createBrowserRouter(
@@ -22,8 +22,8 @@ const router = createBrowserRouter(
       <Route path="/trending/:page" element={<Trending></Trending>}></Route>
       <Route path="/moviedetails/:id" element={<Moviedetails></Moviedetails>}></Route>
       <Route path="/category/:id" element={<Category></Category>}></Route>
-      <Route path="Search" element={<Search></Search>}></Route>
-      <Route path="load" element={<LoadingScreen></LoadingScreen>}></Route>
+      <Route path="Search/:page" element={<Search></Search>}></Route>
+      
     </Route>
   )
 )

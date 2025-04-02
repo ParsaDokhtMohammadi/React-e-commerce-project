@@ -7,6 +7,10 @@ import LoadingScreen from "./LoadingScreen";
 const Trending = () => {
   const navigate = useNavigate();
   const { page: urlPage } = useParams();
+  const changePage = (newPage) => {
+    navigate(`/trending/${newPage}`)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  };
   const page = Number(urlPage) || 1;
   const { data: trending, isLoading } = useGetTrendingMoviesQuery(page);
   const totalpage = trending?.total_pages;
@@ -14,14 +18,14 @@ const Trending = () => {
     return <LoadingScreen></LoadingScreen>;
   } else {
     return (
-      <>
+      <>z
         <div className="p-8 flex flex-col items-center">
           <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] lg:grid-cols-[repeat(4,minmax(200px,1fr))] md:grid-cols-[repeat(3,minmax(200px,1fr))]  gap-6 min-h-[calc(100vh-329px)]">
             {trending?.results.map((movie) => (
               <Card key={movie.id} movie={movie} />
             ))}
           </div>
-          <Pagination totalpage={totalpage} page={page}></Pagination>
+          <Pagination totalpage={totalpage} page={page} changePage={changePage}></Pagination>
         </div>
       </>
     );

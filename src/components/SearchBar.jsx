@@ -4,13 +4,19 @@ import { useNavigate } from "react-router";
 const SearchBar = () => {
   const [search, setSearch] = useState();
   const navigate = useNavigate();
+  const handleForm = (e) =>{
+    e.preventDefault()
+    navigate(`/search/1?query=${search}`)
+    
+
+  }
   return (
-    <form action="">
+      <form action="" onSubmit={handleForm}>
       <div className="flex gap-2 items-center border rounded pl-2">
         <button
           className="cursor-pointer"
-          onClick={() => navigate(`/search?query=${search}`)}
-        >
+          type="submit"
+          >
           <FaSearch />
         </button>
         <input
@@ -19,9 +25,10 @@ const SearchBar = () => {
           className="outline-none bg-[#EEE] text-[#1E1E1E] pl-1 "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
+          />
       </div>
-    </form>
+      </form>
+    
   );
 };
 

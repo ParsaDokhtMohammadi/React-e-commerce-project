@@ -1,12 +1,8 @@
 import React from 'react'
-import { useNavigate } from 'react-router';
 import { FaChevronLeft ,FaChevronRight } from "react-icons/fa";
-const Pagination = ({page , totalpage , newPage}) => {
-    const navigate = useNavigate();
-    const changePage = (newPage) => {
-        navigate(`/trending/${newPage}`)
-        window.scrollTo({ top: 0, behavior: "smooth" })
-      };
+const Pagination = ({page , totalpage , changePage}) => {
+
+  
     const paginationPlus = () => {
         return [1,2].map((num) => {
           const pageNumber = page + num;
