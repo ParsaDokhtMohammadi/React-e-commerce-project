@@ -46,17 +46,12 @@ const Home = () => {
   const { data: SlideShowMovies, isLoading: SlideLoading } =
     useGetTrendingMoviesQuery();
   const { data: Actionmovies, isLoading: ActionLoading } =
-    useGetMoviesByGenreQuery(28);
+    useGetMoviesByGenreQuery({genreId:28});
   const { data: HorrorMovies, isLoading: HorrorLoading } =
-    useGetMoviesByGenreQuery(27);
+    useGetMoviesByGenreQuery({genreId:27});
   const { data: animations, isLoading: animationsLoading } =
-    useGetMoviesByGenreQuery(16);
-  // const { data: AdventureMovies } = useGetMoviesByGenreQuery(12);
-  // const { data: CrimeMovies } = useGetMoviesByGenreQuery(80);
-  // const { data: ComedyMovies } = useGetMoviesByGenreQuery(35);
-  // console.log(AdventureMovies);
-  // console.log(CrimeMovies);
-  // console.log(ComedyMovies?.results[12]);
+    useGetMoviesByGenreQuery({genreId:16});
+
   if (SlideLoading || ActionLoading || HorrorLoading || animationsLoading) {
     return <LoadingScreen></LoadingScreen>;
   } else {
@@ -149,6 +144,7 @@ const Home = () => {
               <Slider {...sliderSettings}>
                 {animations?.results.slice(0, 10).map((movie) => (
                   <div key={movie.id} className="p-2 ">
+                    
                     <Card movie={movie}></Card>
                   </div>
                 ))}

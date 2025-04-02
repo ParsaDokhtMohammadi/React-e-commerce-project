@@ -9,7 +9,7 @@ const Search = () => {
     const navigate = useNavigate()
     const { page: urlPage } = useParams(); 
     const page = Number(urlPage) || 1
-    const [searched] = useSearchParams()
+    const [searched] = useSearchParams() 
     const query = searched.get("query")
     console.log(query)
     const {data : searchedMovies , isLoading} = useSearchMovieQuery({movie:query , page:page })

@@ -27,9 +27,9 @@ const Card = (movie) => {
             ? movie.movie.overview.substring(0, maxChar) + "..."
             : movie.movie.overview}
         </p>
-        <div className="flex flex-row justify-between w-full">
+        <div className="flex flex-row justify-between  w-full">
           <span>16.99$</span>
-          <div className="flex gap-1">
+          <div className="flex gap-2 items-center">
           <Tippy  content={isInCart? "remove from cart":"add to cart"} >
           <button type="button" className="cursor-pointer  "onClick={()=>dispatch(handleCart(movie.movie))}>
             {isInCart ? <FaCartPlus className="text-[#27AE60] lg:text-2xl " /> : <FaCartPlus  className="lg:text-2xl"/>}

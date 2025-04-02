@@ -2,7 +2,7 @@ import { useGetTrendingMoviesQuery } from "../services/ProductsApiSlice";
 import { useNavigate, useParams } from "react-router";
 import Card from "./Card";
 import Pagination from "./Pagination";
-import LoadingScreen from "./LoadingScreen";
+import LoadingScreen from "./LoadingScreen"; 
 
 const Trending = () => {
   const navigate = useNavigate();

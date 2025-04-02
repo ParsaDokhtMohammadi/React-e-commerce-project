@@ -10,6 +10,7 @@ import {
   useGetMovieDetailsQuery,
   useGetMoviesByGenreQuery,
 } from "../services/ProductsApiSlice";
+
 import {
   handleFavoritesButtonRender,
   handleFavorites,
@@ -27,7 +28,7 @@ const Moviedetails = () => {
   );
   const isInCart = useSelector((state) => handleCartButtonRender(state, movieDetails?.id));
   const { data: similarMovies, isLoading: GenreLoading } =
-    useGetMoviesByGenreQuery(movieDetails?.genres[0].id);
+    useGetMoviesByGenreQuery({genreId: movieDetails?.genres[0].id});
 
   const settings = {
     infinite: true,
