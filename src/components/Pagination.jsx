@@ -36,7 +36,7 @@ const Pagination = ({page , totalpage , changePage}) => {
   return (
     <div className="flex gap-2 mt-6">
     <button
-      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
+      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200 max-md:hidden"
       onClick={() => changePage(Math.max(page - 1, 1))}
       disabled={page === 1}
     >
@@ -68,7 +68,7 @@ const Pagination = ({page , totalpage , changePage}) => {
       {totalpage}
     </button>
     <button
-      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200"
+      className="px-4 py-2 flex  items-center gap-1 bg-[#E50914] text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200 max-md:hidden"
       onClick={() => changePage(page + 1)}
       disabled={totalpage && page >= totalpage}
     >
