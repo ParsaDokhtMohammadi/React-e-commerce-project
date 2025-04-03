@@ -63,7 +63,7 @@ const Pagination = ({page , totalpage , changePage}) => {
     
     {totalpage-page > 3 ? <span className='text-2xl'>...</span> : ""}
     <button
-     className={`px-4 py-2 ${page===totalpage ?"bg-[#27AE60]" :"bg-[#E50914]"} text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200`}
+     className={`px-4 py-2 ${page===totalpage ?"bg-[#27AE60]" :"bg-[#E50914]"} ${totalpage===1 ? "hidden" : "block"} text-[#EEE] rounded disabled:opacity-50 cursor-pointer hover:bg-[#27AE60] duration-200`}
      onClick={() => changePage(totalpage)}>
       {totalpage}
     </button>

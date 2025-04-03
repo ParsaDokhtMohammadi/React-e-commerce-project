@@ -7,8 +7,10 @@ import { FaStar } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Tippy from "@tippyjs/react";
 import { useGetGenresQuery } from "../services/ProductsApiSlice";
+import { useState } from "react";
 
 const Header = () => {
+  const [categoryListRender , setCategoryListRender] = useState(false)
   const CartLength = useSelector((state) => state.Movies.cart).length;
   const FavoritesLength = useSelector((state) => state.Movies.favorites).length;
 
@@ -59,12 +61,11 @@ const Header = () => {
           >
             Trending
           </NavLink>
-          <span className="relative group  ">
-            category
+          <div className="relative">
+            <button onClick={()=>setCategoryListRender(!categoryListRender)} className="cursor-pointer">category</button>
             <ul
-              className="absolute left-0 top-8 w-[300px] flex flex-wrap gap-2 bg-[#1E1E1E] 
-                        rounded-b-2xl z-10 p-2 opacity-0  
-                        group-hover:opacity-100 transition-opacity duration-200"
+              className={`absolute left-0 top-8 w-[300px] ${categoryListRender ? "flex" : "hidden"} flex-wrap gap-2 bg-[#1E1E1E] 
+              rounded-b-2xl z-10 p-2  transition-opacity duration-200`}
             >
               {allgenres?.genres.map((genre) => (
                 <li key={genre.id}>
@@ -72,7 +73,7 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-          </span>
+          </div>
         </nav>
         <Link to={"/"}>
           <img src="logo.png" className="w-28" />
